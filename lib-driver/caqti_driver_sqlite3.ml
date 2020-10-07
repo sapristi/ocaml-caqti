@@ -537,7 +537,7 @@ module Connect_functor (System : Caqti_driver_sig.System_unix) = struct
       (* Connect, configure, wrap. *)
       Preemptive.detach
         (fun () ->
-          Sqlite3.db_open ~mutex:`FULL ?mode (Uri.path uri |> Uri.pct_decode))
+          Sqlite3.db_open ~mutex:`NO ?mode (Uri.path uri |> Uri.pct_decode))
         () >|= fun db ->
       (match busy_timeout with
        | None -> ()
